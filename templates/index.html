@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+{% block body %}
+<script type=text/javascript>
+$(document).ready(function() {
+	$("#iframe1").contents().find("body").find('div').attr('title','Video 1');
+	$("#iframe2").contents().find("body").find('div').attr('title','Video 2');
+	$("#iframe3").contents().find("body").find('div').attr('title','Video 3');
+    $("input").click(function(){
+    	$("input."+this.className).not($(this)).each(function(){
+        	this.checked = false;
+    	});
+    $("input:not([name='"+this.name+"'])").each(function(){
+        if ($("input[name='"+this.name+"']:checked").length < 1)
+            if($("input."+this.className+":checked").length < 1)
+                this.checked = true;
+    	});
+  	});
+});
+
+</script>
+
+<h4>Video Rating</h4>
+<form action="/submit">
+<table width="200">
+<tr>
+<td> </td>
+<td>Low</td>
+<td>Medium</td>
+<td>High</td>
+</tr>
+<tr> 
+<td>1</td> 
+<td><input type="radio" class="lowPop" name="video1" value="low" checked></td> 
+<td><input type="radio" class="medPop" name="video1" value="med"></td> 
+<td><input type="radio" class="highPop" name="video1" value="high"></td> 
+</tr>
+<tr> 
+<td>2</td> 
+<td><input type="radio" class="lowPop" name="video2" value="low"></td> 
+<td><input type="radio" class="medPop" name="video2" value="med" checked></td> 
+<td><input type="radio" class="highPop" name="video2" value="high"></td> 
+</tr>
+<tr> 
+<td>3</td> 
+<td><input type="radio" class="lowPop" name="video3" value="low"></td> 
+<td><input type="radio" class="medPop" name="video3" value="med"></td> 
+<td><input type="radio" class="highPop" name="video3" value="high" checked></td> 
+</tr>
+</table>
+<input type="submit">
+</form>
+<table>
+<tr><h4>Video 1: {{v1_count}} views</h4></tr>
+<tr>
+<iframe src="https://embed-ssl.ted.com/talks/terry_moore_how_to_tie_your_shoes.html" width="640" height="360" frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen id="iframe1"></iframe>
+</tr>
+<tr><h4>Video 2 {{v2_count}} views</h4></tr>
+<tr>
+<iframe src="https://embed-ssl.ted.com/talks/paolo_cardini_forget_multitasking_try_monotasking.html" width="640" height="360" frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen id="iframe2"></iframe>
+</tr>
+<tr><h4>Video 3 {{v3_count}} views</h4></tr>
+<tr>
+<iframe src="https://embed-ssl.ted.com/talks/steve_jurvetson_on_model_rocketry.html" width="640" height="360" frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen id="iframe3"></iframe>
+</tr>
+</table>
+{% endblock %}
