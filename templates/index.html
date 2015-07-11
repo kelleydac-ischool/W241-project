@@ -1,4 +1,7 @@
 {% extends "layout.html" %}
+{% block header %}
+<link href="{{ url_for('static',filename='styles/main.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
 {% block body %}
 <script type=text/javascript>
 $(document).ready(function() {
@@ -18,8 +21,10 @@ $(document).ready(function() {
 });
 
 </script>
-
+<header>
 <h4>Video Rating</h4>
+</header>
+
 <form action="/submit">
 <table width="200">
 <tr>
@@ -47,8 +52,9 @@ $(document).ready(function() {
 <td><input type="radio" class="highPop" name="video3" value="high" checked></td> 
 </tr>
 </table>
-<input type="submit">
+<button type="submit" height=100px>Vote!</button>
 </form>
+<div id="main">
 <table>
 <tr><h4>Video 1: {{v1_count}} views</h4></tr>
 <tr>
@@ -63,4 +69,7 @@ $(document).ready(function() {
 <iframe src="https://embed-ssl.ted.com/talks/steve_jurvetson_on_model_rocketry.html" width="640" height="360" frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen id="iframe3"></iframe>
 </tr>
 </table>
+</div>
+<footer>Presented by the Summer 2015 W241-2 Project Team</footer>
+
 {% endblock %}

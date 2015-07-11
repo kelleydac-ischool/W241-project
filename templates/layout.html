@@ -1,5 +1,5 @@
 <!doctype html>
-<title>jQuery Example</title>
+<title>W241 Video Experiment</title>
 <script type="text/javascript"
   src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="{{
@@ -7,4 +7,5 @@
 <script type="text/javascript">
   var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 </script>
+{% block header %}{% endblock %}
 {% block body %}{% endblock %}

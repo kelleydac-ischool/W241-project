@@ -24,7 +24,7 @@ class CuingExperiment(SimpleExperiment):
     self.set_log_file('cuing_webapp.log')
 
   def assign(self, params, userid):
-    params.use_round_number = BernoulliTrial(p=0.5, unit=userid)
+    params.use_round_number = BernoulliTrial(p=0.3, unit=userid)
     if params.use_round_number:
       params.v1_count = RandomInteger(min=1, max=4, unit=userid)
       params.v2_count = RandomInteger(min=2, max=5, unit=userid)
